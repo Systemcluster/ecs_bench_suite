@@ -14,20 +14,22 @@ macro_rules! benchmark {
     };
 }
 
-benchmark!(add_remove; bevy, edict, hecs, legion, planck_ecs, shipyard, sparsey, specs);
-benchmark!(frag_iter; bevy, edict, hecs, legion, planck_ecs, shipyard, sparsey, specs);
-benchmark!(heavy_compute; bevy, legion, legion_packed, shipyard, specs);
-benchmark!(schedule; bevy, legion, legion_packed, planck_ecs, shipyard, sparsey, sparsey_packed, specs);
-benchmark!(serialize_binary; hecs);
-benchmark!(serialize_text; hecs);
-benchmark!(simple_insert; bevy, edict, hecs, legion, planck_ecs, shipyard, sparsey, specs);
-benchmark!(simple_iter; bevy, edict, hecs, legion, legion_packed, planck_ecs, shipyard, sparsey, sparsey_packed, specs);
+benchmark!(add_remove;             bevy, edict, hecs, legion,                planck_ecs, shipyard, sparsey,                 specs);
+benchmark!(frag_iter;              bevy, edict, hecs, legion,                planck_ecs, shipyard, sparsey,                 specs);
+benchmark!(heavy_compute;          bevy,        hecs, legion, legion_packed,             shipyard,                          specs);
+benchmark!(parallel_light_compute; bevy,        hecs, legion, legion_packed,             shipyard,                          specs);
+benchmark!(schedule;               bevy,              legion, legion_packed, planck_ecs, shipyard, sparsey, sparsey_packed, specs);
+benchmark!(serialize_binary;       hecs);
+benchmark!(serialize_text;         hecs);
+benchmark!(simple_insert;          bevy, edict, hecs, legion,                planck_ecs, shipyard, sparsey,                 specs);
+benchmark!(simple_iter;            bevy, edict, hecs, legion, legion_packed, planck_ecs, shipyard, sparsey, sparsey_packed, specs);
 
 criterion_group!(
     benchmarks,
     add_remove,
     frag_iter,
     heavy_compute,
+    parallel_light_compute,
     schedule,
     serialize_binary,
     serialize_text,

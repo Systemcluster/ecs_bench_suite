@@ -1,6 +1,7 @@
 pub mod add_remove;
 pub mod frag_iter;
 pub mod heavy_compute;
+pub mod parallel_light_compute;
 pub mod serialize_binary;
 pub mod serialize_text;
 pub mod simple_insert;
