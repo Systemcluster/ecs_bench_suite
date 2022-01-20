@@ -1,13 +1,16 @@
 use cgmath::*;
 use planck_ecs::*;
 
-#[derive(Copy, Clone)]
+#[derive(Clone, Copy)]
 struct Transform(Matrix4<f32>);
-#[derive(Copy, Clone)]
+
+#[derive(Clone, Copy)]
 struct Position(Vector3<f32>);
-#[derive(Copy, Clone)]
+
+#[derive(Clone, Copy)]
 struct Rotation(Vector3<f32>);
-#[derive(Copy, Clone)]
+
+#[derive(Clone, Copy)]
 struct Velocity(Vector3<f32>);
 
 pub struct Benchmark;
@@ -24,13 +27,21 @@ impl Benchmark {
         let mut comp3 = Components::<Rotation>::default();
         let mut comp4 = Components::<Velocity>::default();
 
-        let en = (0..10000).map(|_| entities.create()).collect::<Vec<_>>();
-        en.iter().for_each(|e| {comp1.insert(*e, Transform(Matrix4::<f32>::from_scale(1.0)));});
-        en.iter().for_each(|e| {comp2.insert(*e, Position(Vector3::unit_x()));});
-        en.iter().for_each(|e| {comp3.insert(*e, Rotation(Vector3::unit_x()));});
-        en.iter().for_each(|e| {comp4.insert(*e, Velocity(Vector3::unit_x()));});
+        let en = (0..10_000).map(|_| entities.create()).collect::<Vec<_>>();
+        en.iter().for_each(|e| {
+            comp1.insert(*e, Transform(Matrix4::<f32>::from_scale(1.0)));
+        });
+        en.iter().for_each(|e| {
+            comp2.insert(*e, Position(Vector3::unit_x()));
+        });
+        en.iter().for_each(|e| {
+            comp3.insert(*e, Rotation(Vector3::unit_x()));
+        });
+        en.iter().for_each(|e| {
+            comp4.insert(*e, Velocity(Vector3::unit_x()));
+        });
 
-        /*(0..10000).for_each(|_| {
+        /*(0..10_000).for_each(|_| {
             let e = entities.create();
             comp1.insert(e, Transform(Matrix4::<f32>::from_scale(1.0)));
             comp2.insert(e, Position(Vector3::unit_x()));

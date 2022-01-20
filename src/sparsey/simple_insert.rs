@@ -1,5 +1,5 @@
 use cgmath::*;
-use hecs::*;
+use sparsey::prelude::*;
 
 #[derive(Clone, Copy)]
 struct Transform(Matrix4<f32>);
@@ -21,10 +21,15 @@ impl Benchmark {
     }
 
     pub fn run(&mut self) {
-        let mut world = World::new();
-        world.spawn_batch((0..10_000).map(|_| {
+        let mut world = World::default();
+        world.register::<Transform>();
+        world.register::<Position>();
+        world.register::<Rotation>();
+        world.register::<Velocity>();
+
+        world.create_entities((0..10_000).map(|_| {
             (
-                Transform(Matrix4::from_scale(1.0)),
+                Transform(Matrix4::<f32>::from_scale(1.0)),
                 Position(Vector3::unit_x()),
                 Rotation(Vector3::unit_x()),
                 Velocity(Vector3::unit_x()),
