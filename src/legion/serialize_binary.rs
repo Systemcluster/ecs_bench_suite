@@ -52,7 +52,8 @@ impl Benchmark {
 
     pub fn run(&mut self) {
         let Self(world, registry) = self;
-        let serializable = &world.as_serializable(any(), &*registry);
+        let canon = serialize::Canon::default();
+        let serializable = &world.as_serializable(any(), &*registry, &canon);
 
         let encoded = bincode::serialize(serializable).unwrap();
 
@@ -65,7 +66,7 @@ impl Benchmark {
         );
 
         registry
-            .as_deserialize()
+            .as_deserialize(&serialize::Canon::default())
             .deserialize(&mut deserializer)
             .unwrap();
     }
