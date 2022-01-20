@@ -2,7 +2,7 @@
 
 A suite of benchmarks designed to test and compare Rust ECS library performance across a variety of challenging circumstances.
 
-The full benchmark report is available [here](https://systemcluster.me/ecs_bench_suite/target/criterion/report/index.html).
+The full benchmark report is available [here](https://systemcluster.me/ecs_bench_suite/target/criterion/report/index.html) (generated on a AMD Ryzen 9 5950X).
 
 ## The Benchmarks
 
