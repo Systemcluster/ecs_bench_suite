@@ -4,7 +4,11 @@ A suite of benchmarks designed to test and compare Rust ECS library performance 
 
 The full benchmark report is available [here](https://systemcluster.me/ecs_bench_suite/target/criterion/report/index.html) (generated on a AMD Ryzen 9 5950X).
 
+You can run the benchmarks on your machine with `cargo bench`, the results will be written to `target/criterion`.
+
 ## Benchmarks
+
+Not all benchmarks are implemented for all ECS libraries, see the [this implementation matrix](benches/benchmarks.rs#L17).
 
 ### Simple Insert
 
