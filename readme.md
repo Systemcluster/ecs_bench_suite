@@ -26,6 +26,8 @@ This benchmark is designed to test the core overheads involved in component iter
 
 **Test**: Iterate through all entities with `Position` and `Velocity`, and add velocity onto position.
 
+**Note**: Planck ECS is excluded here because it is much (~20 times) slower than and hides the differences between the other results.
+
 ![Simple Iter Graph](./target/criterion/simple_iter/report/violin.svg)
 
 ### Fragmented Iter
@@ -37,25 +39,6 @@ This benchmark is designed to test how the ECS handles iteration through a fragm
 **Test**: Iterate through all entities with a `Data` component and double its value.
 
 ![Fragmented Iter Graph](./target/criterion/frag_iter/report/violin.svg)
-
-### System Scheduling
-
-This benchmark is designed to test how efficiently the ECS can schedule multiple independent systems on a multi-core CPU. This is primarily an outer-parallelism test. Each system should execute on a single CPU core.
-
-Dataset:
-
-* 10,000 entities with `(A, B)` components.
-* 10,000 entities with `(A, B, C)` components.
-* 10,000 entities with `(A, B, C, D)` components.
-* 10,000 entities with `(A, B, C, E)` components.
-
-**Test**: Three systems accessing the following components mutably, where each system swaps the values stored in each component:
-
-* `(A, B)`
-* `(C, D)`
-* `(C, E)`
-
-![System Scheduling Graph](./target/criterion/schedule/report/violin.svg)
 
 ### Heavy Compute
 
@@ -86,6 +69,25 @@ This benchmark is designed to test how quickly the ECS can add and then remove a
 **Test**: Iterate through all entities, adding a `B` component. Then iterate through all entities again, removing their `B` component.
 
 ![Add/Remove Component Graph](./target/criterion/add_remove/report/violin.svg)
+
+### System Scheduling
+
+This benchmark is designed to test how efficiently the ECS can schedule multiple independent systems on a multi-core CPU. This is primarily an outer-parallelism test. Each system should execute on a single CPU core.
+
+Dataset:
+
+* 10,000 entities with `(A, B)` components.
+* 10,000 entities with `(A, B, C)` components.
+* 10,000 entities with `(A, B, C, D)` components.
+* 10,000 entities with `(A, B, C, E)` components.
+
+**Test**: Three systems accessing the following components mutably, where each system swaps the values stored in each component:
+
+* `(A, B)`
+* `(C, D)`
+* `(C, E)`
+
+![System Scheduling Graph](./target/criterion/schedule/report/violin.svg)
 
 ### Serialize
 
