@@ -12,7 +12,7 @@ impl Benchmark {
         world.register::<B>();
 
         let entities = world
-            .create_entities((0..10_000).map(|_| (A(0.0),)))
+            .create_entities((0..crate::constants::ADD_REMOVE_ENTITIES).map(|_| (A(0.0),)))
             .to_vec();
 
         Self(world, entities)

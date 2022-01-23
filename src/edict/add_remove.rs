@@ -9,7 +9,9 @@ impl Benchmark {
     pub fn new() -> Self {
         let mut world = World::new();
 
-        let entities = (0..10_000).map(|_| world.spawn((A(0.0),))).collect();
+        let entities = (0..crate::constants::ADD_REMOVE_ENTITIES)
+            .map(|_| world.spawn((A(0.0),)))
+            .collect();
 
         Self(world, entities)
     }

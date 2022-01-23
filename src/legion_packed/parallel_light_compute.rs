@@ -22,14 +22,16 @@ impl Benchmark {
 
         let mut world = World::new(options);
 
-        world.extend((0..10000).map(|_| {
-            (
-                Matrix4::<f32>::from_angle_x(Rad(1.2)),
-                Position(Vector3::unit_x()),
-                Rotation(Vector3::unit_x()),
-                Velocity(Vector3::unit_x()),
-            )
-        }));
+        world.extend(
+            (0..crate::constants::PARALLEL_LIGHT_COMPUTE_ENTITIES).map(|_| {
+                (
+                    Matrix4::<f32>::from_angle_x(Rad(1.2)),
+                    Position(Vector3::unit_x()),
+                    Rotation(Vector3::unit_x()),
+                    Velocity(Vector3::unit_x()),
+                )
+            }),
+        );
         world.pack(PackOptions::force());
 
         let query = <(Write<Position>, Write<Matrix4<f32>>)>::query();

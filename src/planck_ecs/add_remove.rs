@@ -11,7 +11,7 @@ impl Benchmark {
         let mut comp1 = Components::<A>::default();
         let comp2 = Components::<B>::default();
 
-        let entities = (0..10_000)
+        let entities = (0..crate::constants::ADD_REMOVE_ENTITIES)
             .map(|_| {
                 let e = entities.create();
                 comp1.insert(e, A(0.0));

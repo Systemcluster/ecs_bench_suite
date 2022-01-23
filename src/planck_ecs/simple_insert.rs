@@ -27,7 +27,9 @@ impl Benchmark {
         let mut comp3 = Components::<Rotation>::default();
         let mut comp4 = Components::<Velocity>::default();
 
-        let en = (0..10_000).map(|_| entities.create()).collect::<Vec<_>>();
+        let en = (0..crate::constants::SIMPLE_INSERT_ENTITIES)
+            .map(|_| entities.create())
+            .collect::<Vec<_>>();
         en.iter().for_each(|e| {
             comp1.insert(*e, Transform(Matrix4::<f32>::from_scale(1.0)));
         });

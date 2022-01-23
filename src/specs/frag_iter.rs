@@ -8,7 +8,7 @@ macro_rules! create_entities {
             #[storage(VecStorage)]
             struct $variants(f32);
             $world.register::<$variants>();
-            (0..20)
+            (0..crate::constants::FRAG_ITER_ENTITIES)
             .for_each(|_| {$world.create_entity().with($variants(0.0)).with(Data(1.0)).build();});
         )*
     };

@@ -38,7 +38,7 @@ impl Benchmark {
         world.register::<Position>();
         world.register::<Rotation>();
         world.register::<Velocity>();
-        (0..10_000).for_each(|_| {
+        (0..crate::constants::SIMPLE_ITER_ENTITIES).for_each(|_| {
             world
                 .create_entity()
                 .with(Transform(Matrix4::<f32>::from_angle_x(Rad(1.2))))

@@ -5,7 +5,7 @@ macro_rules! create_entities {
         $(
             struct $variants(f32);
             $world.initialize::<Components<$variants>>();
-            (0..20)
+            (0..crate::constants::FRAG_ITER_ENTITIES)
             .for_each(|_| {
                 let e = $world.get_mut::<Entities>().unwrap().create();
                 $world.get_mut::<Components<_>>().unwrap().insert(e, $variants(0.0));

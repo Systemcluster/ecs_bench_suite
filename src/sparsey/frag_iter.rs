@@ -5,7 +5,7 @@ macro_rules! create_entities {
         $(
             struct $variant(f32);
             $world.register::<$variant>();
-            $world.create_entities((0..20).map(|_| ($variant(0.0), Data(0.0))));
+            $world.create_entities((0..crate::constants::FRAG_ITER_ENTITIES).map(|_| ($variant(0.0), Data(0.0))));
         )*
     };
 }

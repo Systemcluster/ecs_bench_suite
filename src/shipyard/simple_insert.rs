@@ -30,14 +30,9 @@ impl Benchmark {
                  mut positions: ViewMut<Position>,
                  mut rotations: ViewMut<Rotation>,
                  mut velocities: ViewMut<Velocity>| {
-                    for _ in 0..10_000 {
+                    for _ in 0..crate::constants::SIMPLE_INSERT_ENTITIES {
                         entities.add_entity(
-                            (
-                                &mut transforms,
-                                &mut positions,
-                                &mut rotations,
-                                &mut velocities,
-                            ),
+                            (&mut transforms, &mut positions, &mut rotations, &mut velocities),
                             (
                                 Transform(Matrix4::from_scale(1.0)),
                                 Position(Vector3::unit_x()),

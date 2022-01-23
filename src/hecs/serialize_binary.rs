@@ -69,11 +69,7 @@ impl SerializeContext for SerContext {
         Ok(())
     }
 
-    fn serialize_components<S: SerializeTuple>(
-        &mut self,
-        archetype: &Archetype,
-        out: &mut S,
-    ) -> Result<(), S::Error> {
+    fn serialize_components<S: SerializeTuple>(&mut self, archetype: &Archetype, out: &mut S) -> Result<(), S::Error> {
         try_serialize::<Transform, _>(archetype, out)?;
         try_serialize::<Position, _>(archetype, out)?;
         try_serialize::<Rotation, _>(archetype, out)?;
@@ -148,7 +144,7 @@ impl Benchmark {
     pub fn new() -> Self {
         let mut world = World::new();
 
-        world.spawn_batch((0..1000).map(|_| {
+        world.spawn_batch((0..crate::constants::SERIALIZE_ENTITIES).map(|_| {
             (
                 Transform::default(),
                 Position::default(),
@@ -170,9 +166,7 @@ impl Benchmark {
         )
         .unwrap();
         deserialize(
-            &mut DeContext {
-                components: Vec::new(),
-            },
+            &mut DeContext { components: Vec::new() },
             &mut bincode::Deserializer::from_slice(&encoded, bincode::options()),
         )
         .unwrap();

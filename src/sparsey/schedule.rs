@@ -36,11 +36,11 @@ impl Benchmark {
         world.register::<D>();
         world.register::<E>();
 
-        world.create_entities((0..10_000).map(|_| (A(0.0),)));
-        world.create_entities((0..10_000).map(|_| (A(0.0), B(0.0))));
-        world.create_entities((0..10_000).map(|_| (A(0.0), B(0.0), C(0.0))));
-        world.create_entities((0..10_000).map(|_| (A(0.0), B(0.0), C(0.0), D(0.0))));
-        world.create_entities((0..10_000).map(|_| (A(0.0), B(0.0), C(0.0), E(0.0))));
+        world.create_entities((0..crate::constants::SCHEDULE_ENTITIES).map(|_| (A(0.0),)));
+        world.create_entities((0..crate::constants::SCHEDULE_ENTITIES).map(|_| (A(0.0), B(0.0))));
+        world.create_entities((0..crate::constants::SCHEDULE_ENTITIES).map(|_| (A(0.0), B(0.0), C(0.0))));
+        world.create_entities((0..crate::constants::SCHEDULE_ENTITIES).map(|_| (A(0.0), B(0.0), C(0.0), D(0.0))));
+        world.create_entities((0..crate::constants::SCHEDULE_ENTITIES).map(|_| (A(0.0), B(0.0), C(0.0), E(0.0))));
 
         let dispatcher = Dispatcher::builder()
             .add_system(ab.system())

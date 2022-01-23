@@ -8,7 +8,7 @@ macro_rules! create_entities {
                 | mut entities: EntitiesViewMut,
                 mut data: ViewMut<Data>,
                 mut variants: ViewMut<$variants> | {
-                for _ in (0..20) {
+                for _ in (0..crate::constants::FRAG_ITER_ENTITIES) {
                     entities.add_entity(
                         (&mut variants, &mut data),
                         ($variants(0.0), Data(1.0)),

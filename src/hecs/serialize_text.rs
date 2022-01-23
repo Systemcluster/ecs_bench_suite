@@ -36,11 +36,7 @@ enum ComponentId {
 }
 
 impl SerializeContext for SerContext {
-    fn serialize_entity<S: SerializeMap>(
-        &mut self,
-        entity: EntityRef<'_>,
-        map: &mut S,
-    ) -> Result<(), S::Error> {
+    fn serialize_entity<S: SerializeMap>(&mut self, entity: EntityRef<'_>, map: &mut S) -> Result<(), S::Error> {
         try_serialize::<Transform, _, _>(&entity, &ComponentId::Transform, map)?;
         try_serialize::<Position, _, _>(&entity, &ComponentId::Position, map)?;
         try_serialize::<Rotation, _, _>(&entity, &ComponentId::Rotation, map)?;
@@ -52,11 +48,7 @@ impl SerializeContext for SerContext {
 struct DeContext;
 
 impl DeserializeContext for DeContext {
-    fn deserialize_entity<'de, M>(
-        &mut self,
-        mut map: M,
-        entity: &mut EntityBuilder,
-    ) -> Result<(), M::Error>
+    fn deserialize_entity<'de, M>(&mut self, mut map: M, entity: &mut EntityBuilder) -> Result<(), M::Error>
     where
         M: MapAccess<'de>,
     {
@@ -86,7 +78,7 @@ impl Benchmark {
     pub fn new() -> Self {
         let mut world = World::new();
 
-        world.spawn_batch((0..1000).map(|_| {
+        world.spawn_batch((0..crate::constants::SERIALIZE_ENTITIES).map(|_| {
             (
                 Transform::default(),
                 Position::default(),
@@ -107,10 +99,6 @@ impl Benchmark {
             &mut ron::Serializer::new(&mut encoded, None, false).unwrap(),
         )
         .unwrap();
-        deserialize(
-            &mut DeContext,
-            &mut ron::Deserializer::from_bytes(&encoded).unwrap(),
-        )
-        .unwrap();
+        deserialize(&mut DeContext, &mut ron::Deserializer::from_bytes(&encoded).unwrap()).unwrap();
     }
 }

@@ -33,10 +33,10 @@ impl Benchmark {
 
         world.extend(
             (
-                vec![Transform::default(); 1000],
-                vec![Position::default(); 1000],
-                vec![Rotation::default(); 1000],
-                vec![Velocity::default(); 1000],
+                vec![Transform::default(); crate::constants::SERIALIZE_ENTITIES],
+                vec![Position::default(); crate::constants::SERIALIZE_ENTITIES],
+                vec![Rotation::default(); crate::constants::SERIALIZE_ENTITIES],
+                vec![Velocity::default(); crate::constants::SERIALIZE_ENTITIES],
             )
                 .into_soa(),
         );

@@ -19,8 +19,8 @@ benchmark!(frag_iter;              bevy, edict, hecs, legion,                pla
 benchmark!(heavy_compute;          bevy,        hecs, legion, legion_packed,             shipyard,                          specs);
 benchmark!(parallel_light_compute; bevy,        hecs, legion, legion_packed,             shipyard,                          specs);
 benchmark!(schedule;               bevy,              legion, legion_packed, planck_ecs, shipyard, sparsey, sparsey_packed, specs);
-benchmark!(serialize_binary;       hecs,              legion);
-benchmark!(serialize_text;         hecs,              legion);
+benchmark!(serialize_binary;                    hecs, legion);
+benchmark!(serialize_text;                      hecs, legion);
 benchmark!(simple_insert;          bevy, edict, hecs, legion,                planck_ecs, shipyard, sparsey,                 specs);
 benchmark!(simple_iter;            bevy, edict, hecs, legion, legion_packed,             shipyard, sparsey, sparsey_packed, specs);
 

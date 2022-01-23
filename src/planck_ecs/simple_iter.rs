@@ -14,7 +14,7 @@ impl Benchmark {
         let mut entities = Entities::default();
         let mut position_storage = Components::<Position>::default();
         let mut velocity_storage = Components::<Velocity>::default();
-        (0..10_000).for_each(|_| {
+        (0..crate::constants::SIMPLE_ITER_ENTITIES).for_each(|_| {
             let e = entities.create();
             position_storage.insert(e, Position(Vector3::unit_x()));
             velocity_storage.insert(e, Velocity(Vector3::unit_x()));

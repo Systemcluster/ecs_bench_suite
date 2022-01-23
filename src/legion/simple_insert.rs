@@ -25,10 +25,10 @@ impl Benchmark {
 
         world.extend(
             (
-                vec![Transform(Matrix4::from_scale(1.0)); 10_000],
-                vec![Position(Vector3::unit_x()); 10_000],
-                vec![Rotation(Vector3::unit_x()); 10_000],
-                vec![Velocity(Vector3::unit_x()); 10_000],
+                vec![Transform(Matrix4::from_scale(1.0)); crate::constants::SIMPLE_INSERT_ENTITIES],
+                vec![Position(Vector3::unit_x()); crate::constants::SIMPLE_INSERT_ENTITIES],
+                vec![Rotation(Vector3::unit_x()); crate::constants::SIMPLE_INSERT_ENTITIES],
+                vec![Velocity(Vector3::unit_x()); crate::constants::SIMPLE_INSERT_ENTITIES],
             )
                 .into_soa(),
         );

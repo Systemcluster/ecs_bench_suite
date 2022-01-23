@@ -66,21 +66,16 @@ impl Benchmark<'_> {
         world.register::<C>();
         world.register::<D>();
         world.register::<E>();
-        (0..10_000).for_each(|_| {
+        (0..crate::constants::SCHEDULE_ENTITIES).for_each(|_| {
             world.create_entity().with(A(0.0)).build();
         });
-        (0..10_000).for_each(|_| {
+        (0..crate::constants::SCHEDULE_ENTITIES).for_each(|_| {
             world.create_entity().with(A(0.0)).with(B(0.0)).build();
         });
-        (0..10_000).for_each(|_| {
-            world
-                .create_entity()
-                .with(A(0.0))
-                .with(B(0.0))
-                .with(C(0.0))
-                .build();
+        (0..crate::constants::SCHEDULE_ENTITIES).for_each(|_| {
+            world.create_entity().with(A(0.0)).with(B(0.0)).with(C(0.0)).build();
         });
-        (0..10_000).for_each(|_| {
+        (0..crate::constants::SCHEDULE_ENTITIES).for_each(|_| {
             world
                 .create_entity()
                 .with(A(0.0))
@@ -89,7 +84,7 @@ impl Benchmark<'_> {
                 .with(D(0.0))
                 .build();
         });
-        (0..10_000).for_each(|_| {
+        (0..crate::constants::SCHEDULE_ENTITIES).for_each(|_| {
             world
                 .create_entity()
                 .with(A(0.0))

@@ -22,7 +22,7 @@ This benchmark is designed to test the base cost of constructing entities and mo
 
 This benchmark is designed to test the core overheads involved in component iteration in best-case conditions. The iteration should occur on a single CPU core.
 
-**Dataset**: 10,000 entities, each with 4 components: `Transform(mat4x4)`, `Position(vec3)`, `Rotation(vec3)` and `Velocity(vec3)`.
+**Dataset**: 50,000 entities, each with 4 components: `Transform(mat4x4)`, `Position(vec3)`, `Rotation(vec3)` and `Velocity(vec3)`.
 
 **Test**: Iterate through all entities with `Position` and `Velocity`, and add velocity onto position.
 
@@ -34,7 +34,7 @@ This benchmark is designed to test the core overheads involved in component iter
 
 This benchmark is designed to test how the ECS handles iteration through a fragmented dataset. The iteration should occur on a single CPU core.
 
-**Dataset**: 26 component types (`A(f32)` through `Z(f32)`), each with 20 entities plus a `Data(f32)` component.
+**Dataset**: 26 component types (`A(f32)` through `Z(f32)`), each with 100 entities plus a `Data(f32)` component.
 
 **Test**: Iterate through all entities with a `Data` component and double its value.
 
@@ -54,7 +54,7 @@ This benchmark is designed to test the ECS's ability to scale when it is allowed
 
 Similar to Heavy Compute, but with a much lighter workload.
 
-**Dataset**: 10,000 entities with a `mat4x4` component.
+**Dataset**: 50,000 entities with a `mat4x4` component.
 
 **Test**: Iterate through all `mat4x4` components, and invert the matrix a single time.
 

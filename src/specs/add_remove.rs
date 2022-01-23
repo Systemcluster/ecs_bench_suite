@@ -16,7 +16,7 @@ impl Benchmark {
         let mut world = World::new();
         world.register::<A>();
         world.register::<B>();
-        let entities = (0..10_000)
+        let entities = (0..crate::constants::ADD_REMOVE_ENTITIES)
             .map(|_| world.create_entity().with(A(0.0)).build())
             .collect();
         Self(world, entities)

@@ -18,7 +18,7 @@ impl Benchmark {
     pub fn new() -> Self {
         let mut world = World::default();
 
-        world.extend((0..1000).map(|_| {
+        world.extend((0..crate::constants::HEAVY_COMPUTE_ENTITIES).map(|_| {
             (
                 Matrix4::<f32>::from_angle_x(Rad(1.2)),
                 Position(Vector3::unit_x()),

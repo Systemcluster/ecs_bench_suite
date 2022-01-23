@@ -26,14 +26,9 @@ impl Benchmark {
                  mut positions: ViewMut<Position>,
                  mut rotations: ViewMut<Rotation>,
                  mut velocities: ViewMut<Velocity>| {
-                    for _ in 0..10_000 {
+                    for _ in 0..crate::constants::SIMPLE_ITER_ENTITIES {
                         entities.add_entity(
-                            (
-                                &mut transforms,
-                                &mut positions,
-                                &mut rotations,
-                                &mut velocities,
-                            ),
+                            (&mut transforms, &mut positions, &mut rotations, &mut velocities),
                             (
                                 Transform(Matrix4::from_scale(1.0)),
                                 Position(Vector3::unit_x()),
@@ -51,15 +46,13 @@ impl Benchmark {
 
     pub fn run(&mut self) {
         self.0
-            .run(
-                |velocities: View<Velocity>, mut positions: ViewMut<Position>| {
-                    (&velocities, &mut positions)
-                        .iter()
-                        .for_each(|(velocity, mut position)| {
-                            position.0 += velocity.0;
-                        })
-                },
-            )
+            .run(|velocities: View<Velocity>, mut positions: ViewMut<Position>| {
+                (&velocities, &mut positions)
+                    .iter()
+                    .for_each(|(velocity, mut position)| {
+                        position.0 += velocity.0;
+                    })
+            })
             .unwrap();
     }
 }
