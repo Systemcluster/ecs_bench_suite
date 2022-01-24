@@ -1,4 +1,4 @@
-use shipyard::*;
+use shipyard_stable::*;
 
 struct A(f32);
 struct B(f32);

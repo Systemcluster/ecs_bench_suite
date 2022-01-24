@@ -1,5 +1,5 @@
 use cgmath::*;
-use shipyard::*;
+use shipyard_stable::*;
 
 #[derive(Clone, Copy)]
 struct Transform(Matrix4<f32>);

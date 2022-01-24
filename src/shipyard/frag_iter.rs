@@ -1,4 +1,4 @@
-use shipyard::*;
+use shipyard_stable::*;
 
 macro_rules! create_entities {
     ($world:ident; $( $variants:ident ),*) => {

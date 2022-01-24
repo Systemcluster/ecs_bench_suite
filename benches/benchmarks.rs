@@ -14,15 +14,15 @@ macro_rules! benchmark {
     };
 }
 
-benchmark!(add_remove;             bevy, edict, hecs, legion,                planck_ecs, shipyard, sparsey,                 specs);
-benchmark!(frag_iter;              bevy, edict, hecs, legion,                planck_ecs, shipyard, sparsey,                 specs);
-benchmark!(heavy_compute;          bevy,        hecs, legion, legion_packed,             shipyard,                          specs);
-benchmark!(parallel_light_compute; bevy,        hecs, legion, legion_packed,             shipyard,                          specs);
-benchmark!(schedule;               bevy,              legion, legion_packed, planck_ecs, shipyard, sparsey, sparsey_packed, specs);
+benchmark!(add_remove;             bevy, edict, hecs, legion,                planck_ecs, shipyard, shipyard_git, sparsey,                 specs);
+benchmark!(frag_iter;              bevy, edict, hecs, legion,                planck_ecs, shipyard, shipyard_git, sparsey,                 specs);
+benchmark!(heavy_compute;          bevy,        hecs, legion, legion_packed,             shipyard, shipyard_git,                          specs);
+benchmark!(parallel_light_compute; bevy,        hecs, legion, legion_packed,             shipyard, shipyard_git,                          specs);
+benchmark!(schedule;               bevy,              legion, legion_packed, planck_ecs, shipyard, shipyard_git, sparsey, sparsey_packed, specs);
 benchmark!(serialize_binary;                    hecs, legion);
 benchmark!(serialize_text;                      hecs, legion);
-benchmark!(simple_insert;          bevy, edict, hecs, legion,                planck_ecs, shipyard, sparsey,                 specs);
-benchmark!(simple_iter;            bevy, edict, hecs, legion, legion_packed,             shipyard, sparsey, sparsey_packed, specs);
+benchmark!(simple_insert;          bevy, edict, hecs, legion,                planck_ecs, shipyard, shipyard_git, sparsey,                 specs);
+benchmark!(simple_iter;            bevy, edict, hecs, legion, legion_packed,             shipyard, shipyard_git, sparsey, sparsey_packed, specs);
 
 criterion_group!(
     benchmarks,

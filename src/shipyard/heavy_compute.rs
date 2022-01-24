@@ -1,6 +1,6 @@
 use cgmath::*;
 use rayon::prelude::*;
-use shipyard::*;
+use shipyard_stable::*;
 
 #[derive(Clone, Copy)]
 struct Position(Vector3<f32>);
@@ -26,12 +26,7 @@ impl Benchmark {
                  mut velocities: ViewMut<Velocity>| {
                     for _ in 0..crate::constants::HEAVY_COMPUTE_ENTITIES {
                         entities.add_entity(
-                            (
-                                &mut transforms,
-                                &mut positions,
-                                &mut rotations,
-                                &mut velocities,
-                            ),
+                            (&mut transforms, &mut positions, &mut rotations, &mut velocities),
                             (
                                 Matrix4::<f32>::from_angle_x(Rad(1.2)),
                                 Position(Vector3::unit_x()),
